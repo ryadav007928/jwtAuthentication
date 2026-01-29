@@ -26,7 +26,7 @@ catch(e){
 
 async function handlelogin(req,res) {
   
- 
+     ip=req.ip
      const {email,password}=req.body
 
       if ( !email || !password   ) return res.status(401).json({msg:"all fields are reuqired"})
@@ -36,12 +36,12 @@ console.log(user)
 if ( !user  ) return res.status(401).json({msg:"user not Found"})
 
     const paylod ={
-    
+    ip:ip,
     id: user.id,
     username: user.name,
     role: user.role
     }
-    
+    console.log(paylod)
 const token = JWT.sign(paylod,Secrest_key,{ expiresIn: '10h'})
  return res.status(200).json({msg:"login successfully",token:token}) 
 }
