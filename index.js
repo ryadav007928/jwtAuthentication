@@ -3,6 +3,9 @@ const app=express();
 const Jwtauth=require("./middleware/Auth")
 const PORT=5000;
 const {Connection}=require("./config/MongoDB")
+
+app.set("trust proxy", true);
+
 app.use(express.json());
 const router=require("./router/user");
 
